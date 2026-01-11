@@ -1,0 +1,9 @@
+Patch:
+  EndCrystalDisabler:
+    Enabled: true
+  WitherSummonSoundRestriction:
+    Enabled: true
+
+Settings:
+  WitherSummonSoundRestriction:
+    HearableRadius: 25

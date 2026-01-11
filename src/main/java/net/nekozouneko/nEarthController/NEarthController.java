@@ -1,8 +1,13 @@
 package net.nekozouneko.nEarthController;
 
 import lombok.Getter;
-import net.nekozouneko.nEarthController.listener.EntityExplodeListener;
+import net.nekozouneko.nEarthController.impl.EndCrystalDisabler;
+import net.nekozouneko.nEarthController.wrapper.ConfigWrapper;
+import org.bukkit.event.Listener;
 import org.bukkit.plugin.java.JavaPlugin;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public final class NEarthController extends JavaPlugin {
 
@@ -13,11 +18,18 @@ public final class NEarthController extends JavaPlugin {
     public void onEnable() {
         instance = this;
 
+        //Configuration
+        saveDefaultConfig();
+        reloadConfig();
+
+        //Activation Settings
+        List<Listener> listeners = new ArrayList<>();
+        if(ConfigWrapper.isEndCrystalDisablerEnabled) listeners.add(new EndCrystalDisabler());
+
         //Listener
-        getServer().getPluginManager().registerEvents(
-                new EntityExplodeListener(),
-                this
-        );
+        for(Listener listener : listeners){
+            getServer().getPluginManager().registerEvents(listener, this);
+        }
     }
 
     @Override
