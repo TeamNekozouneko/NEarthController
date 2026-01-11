@@ -3,5 +3,7 @@ version: ${version}
 main: net.nekozouneko.nEarthController.NEarthController
 api-version: '1.21'
 
+folia-supported: true
+
 softdepend:
   - packetevents
