@@ -1,0 +1,4 @@
+name: NEarthController
+version: ${version}
+main: net.nekozouneko.nEarthController.NEarthController
+api-version: '1.21'
